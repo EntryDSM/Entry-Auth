@@ -14,6 +14,20 @@
   },
   "rules": {
     "import/prefer-default-export": "off",
+    "import/order": "off",
+    "react/function-component-definition": "off",
+    "arrow-body-style": "off",
+    "react/react-in-jsx-scope": "off",
+    "react/require-default-props": "off",
+    "react/jsx-pascal-case": "off",
+    "@typescript-eslint/naming-convention": "off",
+    "@typescript-eslint/no-use-before-define": "off",
+    "no-underscore-dangle": "off",
+    "operator-linebreak": [
+      2,
+      "before",
+      { "overrides": { "?": "after", "=": "after" } }
+    ],
     "import/extensions": [
       "error",
       "ignorePackages",
