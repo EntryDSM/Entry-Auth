@@ -2,6 +2,7 @@ import { AuthTemplate } from '@/components/AuthTemplate';
 import { AuthLinks } from '@/components/Links';
 import { useQueryValues } from '@/hooks/useQueryValues';
 import styled from '@emotion/styled';
+import { Button, Input, Text } from '@team-entry/design_system';
 
 export const Login = () => {
   const redirectionURI =
@@ -9,11 +10,25 @@ export const Login = () => {
   return (
     <AuthTemplate>
       <_Wrapper>
-        <_Title>로그인</_Title>
-        <p>전화번호</p>
-        <_Input />
-        <p>비밀번호</p>
-        <_Input />
+        <_Title align="center" color="black900" size="header2">
+          로그인
+        </_Title>
+        <Input
+          margin={['top', 42]}
+          width={382}
+          unit=""
+          label="전화번호"
+          type="text"
+          placeholder="전화번호"
+        />
+        <Input
+          margin={[80, 0, 40, 0]}
+          width={382}
+          unit=""
+          label="비밀번호"
+          type="password"
+          placeholder="비밀번호"
+        />
         <_Button>로그인</_Button>
         <AuthLinks />
       </_Wrapper>
@@ -25,14 +40,7 @@ const _Wrapper = styled.div`
   padding: 50px 0;
 `;
 
-const _Title = styled.h1`
-  font-weight: 500;
-  font-size: 30px;
-  line-height: 36px;
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+const _Title = styled(Text)`
   ::after {
     content: '';
     margin-top: 20px;
@@ -42,16 +50,13 @@ const _Title = styled.h1`
   }
 `;
 
-const _Input = styled.div`
-  width: 100%;
-  height: 42px;
-  background-color: #bdbdbd;
-`;
-
 const _Button = styled.button`
   width: 100%;
   height: 42px;
   background-color: #ff7e36;
+  border: 0;
+  outline: 0;
+  border-radius: 5px;
   color: #ffffff;
   margin-top: 45px;
 `;
