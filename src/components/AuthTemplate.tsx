@@ -39,8 +39,8 @@ const _Box = styled.div<{
   width: 500px;
   padding: 50px;
   background-color: #ffffff;
-  box-shadow: 0 0 8px rgba(0, 0, 0, 0.25);
-  border: 8px;
   padding: 50px;
   box-sizing: border-box;
+  box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.25);
+  border-radius: 8px;
 `;
