@@ -7,7 +7,7 @@ export const AuthLinks = () => {
       <Link to="/sign-up" id="sign-up">
         회원가입
       </Link>
-      <Link to="/find-account-id">비밀번호 찾기</Link>
+      <Link to="/change-pwd">비밀번호 찾기</Link>
     </_Links>
   );
 };
