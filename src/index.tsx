@@ -3,6 +3,7 @@ import { createRoot } from 'react-dom/client';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import { App } from './App';
 import { ModalProvider } from './context/modal';
+import { TokenProvider } from './context/token';
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -18,9 +19,11 @@ const root = createRoot(container as Element);
 root.render(
   <QueryClientProvider client={queryClient}>
     <StyledProvider>
-      <ModalProvider>
-        <App />
-      </ModalProvider>
+      <TokenProvider>
+        <ModalProvider>
+          <App />
+        </ModalProvider>
+      </TokenProvider>
     </StyledProvider>
   </QueryClientProvider>,
 );
