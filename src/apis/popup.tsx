@@ -1,18 +1,18 @@
 import { useMutation } from 'react-query';
 import { instance } from './axios';
-import { useState } from 'react';
 import { useToken } from '@/hooks/useToken';
 
 export const useOpenPopUp = () => {
   const { setToken } = useToken();
 
-  const [onAuthorization, setAuthorization] = useState<boolean>(false);
-
   const openPopUp = useMutation(
-    () => instance.post<string>('/user/verify/popup'),
+    (redirectUrl: string) =>
+      // eslint-disable-next-line
+      instance.post<string>('/user/verify/popup', {
+        redirect_url: redirectUrl,
+      }),
     {
       onSuccess: (res) => {
-        setAuthorization(true);
         const parser = new DOMParser();
         const doc = parser.parseFromString(res.data, 'text/html');
 
@@ -28,9 +28,8 @@ export const useOpenPopUp = () => {
       },
     },
   );
+
   return {
-    onAuthorization,
-    changeAuthorizationStatus: setAuthorization,
     openPopUp,
   };
 };
