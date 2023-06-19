@@ -11,6 +11,7 @@ export const OnAuthorization = () => {
     if (token.mdl_tkn) window.open(`/pass?mdl_tkn=${token.mdl_tkn}`, '_blank');
     else navigate('/login');
   };
+
   return (
     <>
       <Text color="#000000" size="18" align="center" margin={['top', 33]}>

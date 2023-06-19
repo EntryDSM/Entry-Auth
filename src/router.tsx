@@ -5,6 +5,7 @@ import { SignUp } from './pages/SignUp';
 import { ChangePwd } from './pages/ChangePwd';
 import { NotFound } from './pages/404';
 import { Pass } from './components/Pass';
+import { Verify } from './pages/Verify';
 
 export const Router = () => {
   return (
@@ -14,6 +15,7 @@ export const Router = () => {
         <Route path="/login" element={<Login />} />
         <Route path="/sign-up" element={<SignUp />} />
         <Route path="/change-pwd" element={<ChangePwd />} />
+        <Route path="/verify" element={<Verify />} />
         <Route path="/pass" element={<Pass />} />
       </Routes>
     </BrowserRouter>

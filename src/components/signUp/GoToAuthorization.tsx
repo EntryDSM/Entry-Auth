@@ -1,19 +1,12 @@
 import { useOpenPopUp } from '@/apis/popup';
+import { BASE_URL } from '@/constant/env';
 import styled from '@emotion/styled';
 import { Button, Text } from '@team-entry/design_system';
-import { Dispatch, SetStateAction } from 'react';
 
-interface Props {
-  changeAuthorizationStatus: Dispatch<SetStateAction<boolean>>;
-}
-
-export const GoToAuthorization = ({ changeAuthorizationStatus }: Props) => {
+export const GoToAuthorization = () => {
   const { openPopUp } = useOpenPopUp();
   const goToAuthorization = () => {
-    setTimeout(() => {
-      changeAuthorizationStatus(true);
-    }, 600);
-    openPopUp.mutate();
+    openPopUp.mutate(`${BASE_URL}/verify`);
   };
   return (
     <>
