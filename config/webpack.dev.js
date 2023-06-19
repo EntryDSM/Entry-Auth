@@ -1,3 +1,5 @@
+const webpack = require('webpack');
+
 module.exports = {
   mode: 'development',
   devtool: 'inline-source-map',
@@ -13,6 +15,11 @@ module.exports = {
     filename: '[name].[contenthash].js',
     publicPath: '/',
   },
+  plugins: [
+    new webpack.EnvironmentPlugin({
+      NODE_ENV: 'development',
+    }),
+  ],
   module: {
     rules: [
       {
