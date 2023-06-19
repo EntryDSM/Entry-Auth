@@ -17,7 +17,6 @@ export const useModal = () => {
     });
   };
   const close = () =>
-    // eslint-disable-next-line implicit-arrow-linebreak
     dispatch({
       type: 'CLOSE',
     });
