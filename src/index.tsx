@@ -4,6 +4,7 @@ import { QueryClient, QueryClientProvider } from 'react-query';
 import { App } from './App';
 import { ModalProvider } from './context/modal';
 import { TokenProvider } from './context/token';
+import { CookiesProvider } from 'react-cookie';
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -19,11 +20,13 @@ const root = createRoot(container as Element);
 root.render(
   <QueryClientProvider client={queryClient}>
     <StyledProvider>
-      <TokenProvider>
-        <ModalProvider>
-          <App />
-        </ModalProvider>
-      </TokenProvider>
+      <CookiesProvider>
+        <TokenProvider>
+          <ModalProvider>
+            <App />
+          </ModalProvider>
+        </TokenProvider>
+      </CookiesProvider>
     </StyledProvider>
   </QueryClientProvider>,
 );

@@ -1,8 +1,8 @@
-import { useQueryValues } from '@/hooks/useQueryValues';
+import { getQueryValues } from '@/utils/getQueryValues';
 import { useEffect } from 'react';
 
 export const Pass = () => {
-  const moduleToken = useQueryValues().get('mdl_tkn');
+  const moduleToken = getQueryValues().get('mdl_tkn');
   function request() {
     // eslint-disable-next-line @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-member-access
     document.form1.submit();
