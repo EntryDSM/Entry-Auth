@@ -4,6 +4,7 @@ import { useModal } from '@/hooks/useModal';
 import { Button } from '@team-entry/design_system';
 import { setTokens } from '@/utils/cookies';
 import { AuthResponse } from './login';
+import { SuccessIcon } from '@/assets/success';
 
 export const useSignUp = (redirectURL: string) => {
   const { render } = useModal();
@@ -16,6 +17,7 @@ export const useSignUp = (redirectURL: string) => {
         setTokens(res.data.access_token, res.data.refresh_token);
         render({
           title: '회원가입',
+          icon: <SuccessIcon />,
           content: '가입이 완료되었습니다',
           button: (
             <Button

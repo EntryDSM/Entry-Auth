@@ -9,7 +9,7 @@ export const Modal = () => {
     <_Wrapper>
       <AuthTemplate title={state.title}>
         <_Content>
-          {state.icon}
+          {state.icon && state.icon}
           <p>{state.content}</p>
           {state.button}
         </_Content>
