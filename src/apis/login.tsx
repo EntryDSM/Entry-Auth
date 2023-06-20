@@ -1,21 +1,31 @@
 import { useMutation } from 'react-query';
 import { instance } from './axios';
+import { setTokens } from '@/utils/cookies';
 
-interface LoginProps {
-  tel: string;
-  password: string;
-  redirectionURI: string;
+export interface RedirectURL {
+  redirectURL: string;
+}
+export interface AuthResponse {
+  access_token: string;
+  refresh_token: string;
 }
 
-export const useLogin = ({ tel, password, redirectionURI }: LoginProps) => {
+interface LoginProps {
+  telephone_number: string;
+  password: string;
+}
+
+export const useLogin = (redirectURL: string) => {
   return useMutation(
-    () => instance.post('/user/auth', {
-      telephone_number: tel,
-      password,
-    }),
+    ({ telephone_number, password }: LoginProps) =>
+      instance.post<AuthResponse>('/user/auth', {
+        telephone_number,
+        password,
+      }),
     {
-      onSuccess: () => {
-        window.location.replace(redirectionURI);
+      onSuccess: (res) => {
+        window.location.href = redirectURL;
+        setTokens(res.data.access_token, res.data.refresh_token);
       },
     },
   );
