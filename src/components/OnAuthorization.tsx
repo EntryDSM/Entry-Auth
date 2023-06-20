@@ -1,6 +1,7 @@
 import { useToken } from '@/hooks/useToken';
 import styled from '@emotion/styled';
 import { Button, Text } from '@team-entry/design_system';
+import { useEffect } from 'react';
 import { useNavigate } from 'react-router';
 
 export const OnAuthorization = () => {
@@ -11,6 +12,17 @@ export const OnAuthorization = () => {
     if (token.mdl_tkn) window.open(`/pass?mdl_tkn=${token.mdl_tkn}`, '_blank');
     else navigate('/login');
   };
+
+  const blockReload = (event: BeforeUnloadEvent) => {
+    event.preventDefault();
+    // eslint-disable-next-line no-param-reassign
+    event.returnValue = '';
+  };
+
+  useEffect(() => {
+    window.addEventListener('beforeunload', blockReload);
+    return () => window.removeEventListener('beforeunload', blockReload);
+  }, []);
 
   return (
     <>
