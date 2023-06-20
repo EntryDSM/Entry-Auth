@@ -25,7 +25,7 @@ jobs:
           aws s3 cp \
             --recursive \
             --region ap-northeast-2 \
-            build s3://www.entrydsm.hs.kr
+            build s3://auth.entrydsm.hs.kr
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v1
         with:
