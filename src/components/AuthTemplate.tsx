@@ -37,6 +37,9 @@ const _Wrapper = styled.section`
   justify-content: center;
   align-items: center;
   background-color: white;
+  @media (max-width: 500px) {
+    padding: 15px;
+  }
 `;
 
 const _Background = styled.div`
@@ -51,7 +54,8 @@ const _Box = styled.div<{
   padding: string;
 }>`
   z-index: 2;
-  width: 500px;
+  width: 100%;
+  max-width: 500px;
   padding: ${(props) => props.padding};
   background-color: #ffffff;
   box-sizing: border-box;
