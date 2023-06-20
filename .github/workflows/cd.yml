@@ -1,21 +1,46 @@
-name: build
+name: entry-auth-cd
+
 on:
   push:
     branches:
       - main
 
 jobs:
-  build:
-    runs-on: ubuntu-18.04
-    steps:
-      - name: Checkout source code.
-        uses: actions/checkout@master
+  deploy:
+    name: Build, Deploy to S3 bucket
+    runs-on: [ubuntu-latest]
 
-      - name: Install Dependencies
-        run: yarn install
+    strategy:
+      matrix:
+        node-version: [16.x]
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+
+      - name: Generate Environment Variables File for Production
+        env:
+          REACT_APP_BASE_URL: ${{ secrets.REACT_APP_BASE_URL }}
+        run: |
+          echo "REACT_APP_BASE_URL=$REACT_APP_BASE_URL" >> .env
+
+      - name: Npm install
+        run: npm install
 
       - name: Build
-        run: CI='' yarn build
+        run: DISABLE_ESLINT_PLUGIN=true npm run build
+
+      - name: Cache node modulesa
+        uses: actions/cache@v2
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-node-modules-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-modules-
 
       - name: Deploy
         env:
