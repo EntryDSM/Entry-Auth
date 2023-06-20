@@ -16,15 +16,13 @@ export const _Links = styled.div`
   display: flex;
   justify-content: center;
   margin-top: 15px;
-  > #sign-up {
-    ::after {
-      content: '';
-      float: right;
-      width: 1px;
-      height: 20px;
-      background-color: black;
-      margin: 0 20px;
-      color: black;
-    }
+  > #sign-up::after {
+    content: '';
+    float: right;
+    width: 1px;
+    height: 20px;
+    background-color: black;
+    margin: 0 20px;
+    color: black;
   }
 `;
