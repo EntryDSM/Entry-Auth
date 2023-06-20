@@ -14,15 +14,16 @@ export const Router = () => {
   const redirectURL =
     getQueryValues().get('redirect_url') || 'https://www.entrydsm.hs.kr';
 
+  const [accessToken, refreshToken] = getCookies<string[]>([
+    'access_token',
+    'refresh_token',
+  ]);
+
   useEffect(() => {
-    const [accessToken, refreshToken] = getCookies<string[]>([
-      'access_token',
-      'refresh_token',
-    ]);
-    console.log(accessToken);
-    console.log(refreshToken);
-    if (accessToken && refreshToken) window.history.back();
-  }, []);
+    if (accessToken && refreshToken) {
+      window.location.href = redirectURL;
+    }
+  }, [accessToken, refreshToken, redirectURL]);
 
   return (
     <BrowserRouter>
