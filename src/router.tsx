@@ -7,10 +7,22 @@ import { NotFound } from './pages/404';
 import { Pass } from './components/Pass';
 import { Verify } from './pages/Verify';
 import { getQueryValues } from './utils/getQueryValues';
+import { useEffect } from 'react';
+import { getCookies } from './utils/cookies';
 
 export const Router = () => {
   const redirectURL =
     getQueryValues().get('redirect_url') || 'https://www.entrydsm.hs.kr';
+
+  useEffect(() => {
+    const [accessToken, refreshToken] = getCookies<string[]>([
+      'access_token',
+      'refresh_token',
+    ]);
+    console.log(accessToken);
+    console.log(refreshToken);
+    if (accessToken && refreshToken) window.history.back();
+  }, []);
 
   return (
     <BrowserRouter>
