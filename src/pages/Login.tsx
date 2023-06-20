@@ -21,7 +21,7 @@ export const Login = ({ redirectURL }: RedirectURL) => {
       <AuthTemplate title="로그인" padding="102px 50px" withUnderLine>
         <Input
           margin={['top', 20]}
-          width={382}
+          width="100%"
           unit=""
           label="전화번호"
           type="text"
@@ -32,7 +32,7 @@ export const Login = ({ redirectURL }: RedirectURL) => {
         />
         <Input
           margin={['top', 35]}
-          width={382}
+          width="100%"
           unit=""
           label="비밀번호"
           type="password"
