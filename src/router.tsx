@@ -6,14 +6,18 @@ import { ChangePwd } from './pages/ChangePwd';
 import { NotFound } from './pages/404';
 import { Pass } from './components/Pass';
 import { Verify } from './pages/Verify';
+import { getQueryValues } from './utils/getQueryValues';
 
 export const Router = () => {
+  const redirectURL =
+    getQueryValues().get('redirect_url') || 'https://www.entrydsm.hs.kr';
+
   return (
     <BrowserRouter>
       <Routes>
         <Route path="/*" element={<NotFound />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/sign-up" element={<SignUp />} />
+        <Route path="/login" element={<Login redirectURL={redirectURL} />} />
+        <Route path="/sign-up" element={<SignUp redirectURL={redirectURL} />} />
         <Route path="/change-pwd" element={<ChangePwd />} />
         <Route path="/verify" element={<Verify />} />
         <Route path="/pass" element={<Pass />} />
