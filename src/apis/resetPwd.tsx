@@ -6,16 +6,16 @@ import { Button } from '@team-entry/design_system';
 import { useNavigate } from 'react-router';
 
 export interface ResetPwdRequest {
+  telephone_number: string;
   new_password: string;
-  check_password: string;
 }
 
 export const useResetPwd = () => {
-  const { render } = useModal();
+  const { render, close } = useModal();
   const navigate = useNavigate();
 
   const resetPwd = useMutation(
-    (body: ResetPwdRequest) => instance.post('/password', body),
+    (body: ResetPwdRequest) => instance.patch('/user/password', body),
     {
       onSuccess: () => {
         render({
@@ -28,6 +28,7 @@ export const useResetPwd = () => {
               color="orange"
               onClick={() => {
                 navigate('/login');
+                close();
               }}
             >
               완료

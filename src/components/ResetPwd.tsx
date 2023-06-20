@@ -1,19 +1,30 @@
-import { ResetPwdRequest, useResetPwd } from '@/apis/resetPwd';
+import { useResetPwd } from '@/apis/resetPwd';
 import { useForm } from '@/hooks/useForm';
 import { Button, Input } from '@team-entry/design_system';
 import { SubmitForm } from './SubmitForm';
 import styled from '@emotion/styled';
 import { useEffect } from 'react';
 import { removeLocalStorageItem } from '@/utils/localstorage';
+import { useNavigate } from 'react-router';
 
-export const ReSetPwd = () => {
-  const { state, onChangeInputValue } = useForm<ResetPwdRequest>({
+interface Props {
+  telephone_number: string;
+}
+
+export const ReSetPwd = ({ telephone_number }: Props) => {
+  const { state, onChangeInputValue } = useForm<{
+    new_password: string;
+    check_password: string;
+  }>({
     new_password: '',
     check_password: '',
   });
   const { resetPwd } = useResetPwd();
+  const navigate = useNavigate();
 
   useEffect(() => removeLocalStorageItem('isVerified'), []);
+
+  if (!telephone_number) navigate('/change-pwd');
 
   return (
     <SubmitForm>
@@ -25,7 +36,7 @@ export const ReSetPwd = () => {
         name="new_password"
         onChange={onChangeInputValue}
         value={state.new_password}
-        margin={['top', 16]}
+        margin={['top', 33]}
       />
       <Input
         type="password"
@@ -35,13 +46,17 @@ export const ReSetPwd = () => {
         name="check_password"
         onChange={onChangeInputValue}
         value={state.check_password}
-        margin={['top', 16]}
+        margin={['top', 33]}
       />
       <_Button
         kind="contained"
         color="orange"
-        onClick={() => resetPwd.mutate(state)}
-        margin={['top', 16]}
+        onClick={() =>
+          resetPwd.mutate({
+            telephone_number,
+            new_password: state.new_password,
+          })}
+        margin={['top', 33]}
         disabled={state.check_password !== state.new_password}
       >
         확인

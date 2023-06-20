@@ -17,6 +17,7 @@ export const useVerifyUserInfo = (mdl_tkn: string | null) => {
 
   useEffect(() => {
     window.addEventListener('focus', onFocus);
+
     return () => {
       window.removeEventListener('focus', onFocus);
     };

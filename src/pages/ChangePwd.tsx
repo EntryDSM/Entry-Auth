@@ -13,7 +13,9 @@ export const ChangePwd = () => {
   const Component = useMemo(() => {
     let component;
     if (getUserData.data?.data) {
-      component = <ReSetPwd />;
+      component = (
+        <ReSetPwd telephone_number={getUserData.data.data.phone_number} />
+      );
     } else if (token.mdl_tkn) {
       component = <OnAuthorization />;
     } else {
