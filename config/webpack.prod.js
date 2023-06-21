@@ -11,6 +11,7 @@ module.exports = {
   output: {
     filename: '[name].[contenthash].js',
     path: path.resolve(__dirname, '../dist'),
+    assetModuleFilename: 'static/media/[hash][ext][query]',
     publicPath: './',
     clean: true,
   },
