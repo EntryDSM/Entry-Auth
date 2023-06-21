@@ -65,7 +65,7 @@ export const InsertUserInfo = ({ redirectURL }: RedirectURL) => {
         onChange={onChangeInputValue}
       />
       <_Button
-        margin={['top', 16]}
+        margin={['top', 32]}
         onClick={() => {
           signUp.mutate({
             telephone_number: phone_number,
