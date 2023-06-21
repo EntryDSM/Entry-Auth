@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
-import { BackgroundImage } from '../assets/Background';
+import Bg from '../assets/bg.png';
 
 interface PropsType {
   children: React.ReactNode;
@@ -18,9 +18,7 @@ export const AuthTemplate = ({
 }: PropsType) => {
   return (
     <_Wrapper>
-      <_Background>
-        <BackgroundImage />
-      </_Background>
+      <_Image src={Bg} alt="" />
       <_Box width={width} padding={padding}>
         <_Title>{title}</_Title>
         {withUnderLine && <_Divider />}
@@ -37,22 +35,22 @@ const _Wrapper = styled.section`
   justify-content: center;
   align-items: center;
   background-color: white;
+
+  > svg {
+    width: 100vw;
+    height: 100vh;
+  }
+
   @media (max-width: 500px) {
     padding: 15px;
   }
-`;
-
-const _Background = styled.div`
-  position: absolute;
-  width: 100vw;
-  height: 100vh;
-  transform: translate(-16%, -5%);
 `;
 
 const _Box = styled.div<{
   width: number;
   padding: string;
 }>`
+  position: absolute;
   z-index: 2;
   width: 100%;
   max-width: 500px;
@@ -61,6 +59,12 @@ const _Box = styled.div<{
   box-sizing: border-box;
   box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.25);
   border-radius: 8px;
+`;
+
+const _Image = styled.img`
+  object-fit: contain;
+  width: 100vw;
+  height: 100vh;
 `;
 
 const _Title = styled.h1`
