@@ -19,11 +19,11 @@ export const Router = () => {
     'refresh_token',
   ]);
 
-  useEffect(() => {
-    if (accessToken && refreshToken) {
-      window.location.href = redirectURL;
-    }
-  }, [accessToken, refreshToken, redirectURL]);
+  // useEffect(() => {
+  //   if (accessToken && refreshToken) {
+  //     window.location.href = redirectURL;
+  //   }
+  // }, [accessToken, refreshToken, redirectURL]);
 
   return (
     <BrowserRouter>
