@@ -1,3 +1,4 @@
+import { COOKIE_DOMAIN } from '@/constant/env';
 import { Cookies } from 'react-cookie';
 import { CookieSetOptions } from 'universal-cookie';
 
@@ -25,4 +26,9 @@ export const getCookies = <T>(key: CookieItem | CookieItem[]) => {
 };
 
 export const setTokens = (accessToken: string, refreshToken: string) =>
-  setCookies(['access_token', 'refresh_token'], [accessToken, refreshToken]);
+  setCookies(['access_token', 'refresh_token'], [accessToken, refreshToken], {
+    path: '/',
+    secure: true,
+    sameSite: 'none',
+    domain: COOKIE_DOMAIN,
+  });

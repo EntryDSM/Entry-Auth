@@ -30,6 +30,7 @@
       "after",
       { "overrides": { "?": "after", "=": "after" } }
     ],
+    "operator-linebreak": "off",
     "import/extensions": [
       "error",
       "ignorePackages",
