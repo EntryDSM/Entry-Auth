@@ -23,6 +23,9 @@ export const useLogin = (redirectURL: string) => {
         password,
       }),
     {
+      onError: () => {
+        alert('로그인에 실패하였습니다.');
+      },
       onSuccess: (res) => {
         window.location.href = redirectURL;
         setTokens(res.data.access_token, res.data.refresh_token);

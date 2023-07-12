@@ -13,6 +13,9 @@ export const useSignUp = (redirectURL: string) => {
     (body: { telephone_number: string; password: string }) =>
       instance.post<AuthResponse>('/user', body),
     {
+      onError: () => {
+        alert('회원가입에 실패하였습니다.');
+      },
       onSuccess: (res) => {
         setTokens(res.data.access_token, res.data.refresh_token);
         render({
