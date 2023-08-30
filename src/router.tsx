@@ -30,6 +30,10 @@ export const Router = () => {
       <Routes>
         <Route path="/*" element={<NotFound />} />
         <Route path="/login" element={<Login redirectURL={redirectURL} />} />
+        <Route
+          path="/admin-login"
+          element={<Login redirectURL={redirectURL} isAdmin />}
+        />
         <Route path="/sign-up" element={<SignUp redirectURL={redirectURL} />} />
         <Route path="/change-pwd" element={<ChangePwd />} />
         <Route path="/verify" element={<Verify />} />
