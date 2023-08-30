@@ -1,8 +1,9 @@
+/* eslint-disable object-curly-newline */
 import React from 'react';
 import SchoolBag from '@/assets/SchoolBag';
 import Users from '@/assets/Users';
 import styled from '@emotion/styled';
-import { Text, Button, theme } from '@team-entry/design_system';
+import { Text, Button, theme, HStack } from '@team-entry/design_system';
 import { useModal } from '@/hooks/useModal';
 
 interface IDivideSignupCard {
@@ -45,7 +46,7 @@ const DivideSignupCard = ({
                 content:
                     '학부모 명의로 가입 시 원서 접수 서류에 \n 학부모 연락처가 입력됩니다.',
                 button: (
-                  <div style={{ display: 'flex', gap: '10px' }}>
+                  <HStack gap={10}>
                     <_SelectButton
                       kind="contained"
                       color="orange"
@@ -66,7 +67,7 @@ const DivideSignupCard = ({
                     >
                       닫기
                     </_SelectButton>
-                  </div>
+                  </HStack>
                 ),
               })
         }
