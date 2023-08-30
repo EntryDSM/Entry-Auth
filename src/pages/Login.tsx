@@ -13,13 +13,8 @@ interface ILogin extends RedirectURL {
 }
 
 export const Login = ({ redirectURL, isAdmin = false }: ILogin) => {
-  const { state: userState, onChangeInputValue: onChangeUser } = useForm({
+  const { state, onChangeInputValue } = useForm({
     telephone_number: '',
-    password: '',
-  });
-
-  const { state: adminState, onChangeInputValue: onChangeAdmin } = useForm({
-    id: '',
     password: '',
   });
 
@@ -42,8 +37,8 @@ export const Login = ({ redirectURL, isAdmin = false }: ILogin) => {
           type={isAdmin ? 'text' : 'tel'}
           placeholder={isAdmin ? '아이디' : '전화번호'}
           name={isAdmin ? 'id' : 'telephone_number'}
-          onChange={isAdmin ? onChangeAdmin : onChangeUser}
-          value={isAdmin ? adminState.id : userState.telephone_number}
+          onChange={onChangeInputValue}
+          value={state.telephone_number}
         />
         <Input
           margin={['top', 35]}
@@ -53,25 +48,24 @@ export const Login = ({ redirectURL, isAdmin = false }: ILogin) => {
           type="password"
           placeholder="비밀번호"
           name="password"
-          onChange={isAdmin ? onChangeAdmin : onChangeUser}
-          value={isAdmin ? adminState.password : userState.password}
+          onChange={onChangeInputValue}
+          value={state.password}
         />
         <_Button
           kind="contained"
           onClick={() =>
             (isAdmin
-              ? adminLogin({ id: adminState.id, password: adminState.password })
+              ? adminLogin({
+                id: state.telephone_number,
+                password: state.password,
+              })
               : userLogin({
-                telephone_number: userState.telephone_number,
-                password: userState.password,
+                telephone_number: state.telephone_number,
+                password: state.password,
               }))}
           margin={['top', 45]}
           color={isAdmin ? 'green' : 'orange'}
-          disabled={
-            isAdmin
-              ? !isTruthValues([adminState.id, adminState.password])
-              : !isTruthValues([userState.telephone_number, userState.password])
-          }
+          disabled={!isTruthValues([state.telephone_number, state.password])}
         >
           로그인
         </_Button>
