@@ -36,7 +36,7 @@ export const Login = ({ redirectURL, isAdmin = false }: ILogin) => {
           label={isAdmin ? '아이디' : '전화번호'}
           type={isAdmin ? 'text' : 'tel'}
           placeholder={isAdmin ? '아이디' : '전화번호'}
-          name={isAdmin ? 'id' : 'telephone_number'}
+          name="telephone_number"
           onChange={onChangeInputValue}
           value={state.telephone_number}
         />
