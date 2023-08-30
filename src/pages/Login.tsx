@@ -39,7 +39,7 @@ export const Login = ({ redirectURL, isAdmin = false }: ILogin) => {
           width="100%"
           unit=""
           label={isAdmin ? '아이디' : '전화번호'}
-          type="text"
+          type={isAdmin ? 'text' : 'tel'}
           placeholder={isAdmin ? '아이디' : '전화번호'}
           name={isAdmin ? 'id' : 'telephone_number'}
           onChange={isAdmin ? onChangeAdmin : onChangeUser}

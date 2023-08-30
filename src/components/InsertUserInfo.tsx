@@ -41,7 +41,7 @@ export const InsertUserInfo = ({ isStudent, redirectURL }: IInsertUserInfo) => {
         placeholder=""
       />
       <Input
-        type="text"
+        type="tel"
         value={phone_number}
         label="전화번호"
         width="100%"

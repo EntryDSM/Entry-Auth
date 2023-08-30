@@ -1729,10 +1729,10 @@
   dependencies:
     "@sinonjs/commons" "^3.0.0"
 
-"@team-entry/design_system@^1.0.42":
-  version "1.0.78"
-  resolved "https://registry.yarnpkg.com/@team-entry/design_system/-/design_system-1.0.78.tgz#d23b9679f91df3ee0e9d6d37e002d190456af35c"
-  integrity sha512-SLaji7MgNBOI3RuwNu6VEMBNdlrmtdWgg7DSAue/zBJHODtICKT7URgD83fV69DUUute5uWzEVaXig0Sjy0dCQ==
+"@team-entry/design_system@^1.0.95":
+  version "1.0.95"
+  resolved "https://registry.yarnpkg.com/@team-entry/design_system/-/design_system-1.0.95.tgz#a07b02bf008a52b5bbd37f13c71f26b0013f0321"
+  integrity sha512-ZZF91KkZsWB/HR+Y1qNiAcLZnSX0QSy0lNMpP+alqQP5hCeTml/sb2lww87yqRoUx340PfaUFiEwmEJ9jeNPMw==
   dependencies:
     "@emotion/react" "^11.10.5"
     "@emotion/styled" "^11.10.5"
