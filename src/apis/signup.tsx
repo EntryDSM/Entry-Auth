@@ -10,8 +10,11 @@ export const useSignUp = (redirectURL: string) => {
   const { render } = useModal();
 
   const signUp = useMutation(
-    (body: { telephone_number: string; password: string }) =>
-      instance.post<AuthResponse>('/user', body),
+    (body: {
+      telephone_number: string;
+      password: string;
+      is_student: boolean;
+    }) => instance.post<AuthResponse>('/user', body),
     {
       onError: () => {
         alert('회원가입에 실패하였습니다.');
