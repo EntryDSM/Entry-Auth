@@ -1,5 +1,6 @@
 import styled from '@emotion/styled';
 import Bg from '../assets/bg.png';
+import AdminBg from '../assets/adminBg.png';
 
 interface PropsType {
   children: React.ReactNode;
@@ -7,6 +8,7 @@ interface PropsType {
   withUnderLine?: boolean;
   width?: number;
   padding?: string;
+  isAdmin?: boolean;
 }
 
 export const AuthTemplate = ({
@@ -15,13 +17,14 @@ export const AuthTemplate = ({
   title,
   withUnderLine,
   padding = '50px',
+  isAdmin = false,
 }: PropsType) => {
   return (
     <_Wrapper>
-      <_Image src={Bg} alt="" />
+      <_Image src={isAdmin ? AdminBg : Bg} alt="" />
       <_Box width={width} padding={padding}>
         <_Title>{title}</_Title>
-        {withUnderLine && <_Divider />}
+        {withUnderLine && <_Divider isAdmin={isAdmin} />}
         {children}
       </_Box>
     </_Wrapper>
@@ -72,9 +75,10 @@ const _Title = styled.h1`
   text-align: center;
 `;
 
-const _Divider = styled.hr`
+const _Divider = styled.hr<{ isAdmin: boolean }>`
   width: 50px;
   height: 2px;
-  background-color: ${({ theme }) => theme.color.orange300};
+  background-color: ${({ theme, isAdmin }) =>
+    (isAdmin ? theme.color.green300 : theme.color.orange300)};
   margin: 20px auto 0 auto;
 `;

@@ -30,6 +30,10 @@ const _Content = styled.div`
   > * {
     margin-top: 33px;
   }
+  > p {
+    white-space: pre-wrap;
+    text-align: center;
+  }
   > button {
     margin-top: 33px;
     width: 100%;

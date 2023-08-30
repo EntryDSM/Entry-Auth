@@ -1,6 +1,6 @@
 import { useResetPwd } from '@/apis/resetPwd';
 import { useForm } from '@/hooks/useForm';
-import { Button, Input } from '@team-entry/design_system';
+import { Button, Input, Text } from '@team-entry/design_system';
 import { SubmitForm } from './SubmitForm';
 import styled from '@emotion/styled';
 import { useEffect } from 'react';
@@ -28,16 +28,23 @@ export const ReSetPwd = ({ telephone_number }: Props) => {
 
   return (
     <SubmitForm>
-      <Input
-        type="password"
-        placeholder="새로 사용할 비밀번호를 입력하세요"
-        label="새 비밀번호"
-        width="100%"
-        name="new_password"
-        onChange={onChangeInputValue}
-        value={state.new_password}
-        margin={['top', 33]}
-      />
+      <div>
+        <Input
+          type="password"
+          placeholder="새로 사용할 비밀번호를 입력하세요"
+          label="새 비밀번호"
+          width="100%"
+          name="new_password"
+          onChange={onChangeInputValue}
+          value={state.new_password}
+          margin={['top', 33]}
+        />
+        <Text color="black500" size="body3" margin={['top', 10]}>
+          영문 대소문자, 숫자, 특수문자가 포함되어야 하며
+          <br />
+          8자 이상, 32자 이내여야 합니다
+        </Text>
+      </div>
       <Input
         type="password"
         placeholder="비밀번호를 다시 한 번 입력하세요"

@@ -1,7 +1,11 @@
 import styled from '@emotion/styled';
 import { Link } from 'react-router-dom';
 
-export const AuthLinks = () => {
+interface IAuthLinks {
+  isAdmin: boolean;
+}
+
+export const AuthLinks = ({ isAdmin }: IAuthLinks) => {
   return (
     <_Links>
       <Link to="/sign-up" id="sign-up">
@@ -9,6 +13,10 @@ export const AuthLinks = () => {
       </Link>
       <hr />
       <Link to="/change-pwd">비밀번호 찾기</Link>
+      <hr />
+      <Link to={isAdmin ? '/login' : '/admin-login'}>
+        {isAdmin ? '유저 로그인' : '관리자 로그인'}
+      </Link>
     </_Links>
   );
 };
@@ -16,7 +24,7 @@ export const AuthLinks = () => {
 export const _Links = styled.div`
   display: flex;
   justify-content: center;
-  margin-top: 15px;
+  margin: 30px 0px;
 
   hr {
     width: 1px;

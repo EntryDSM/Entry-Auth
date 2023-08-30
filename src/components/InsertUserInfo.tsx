@@ -1,13 +1,17 @@
 import { useVerifyUserInfo } from '@/apis/verify';
 import { useToken } from '@/hooks/useToken';
 import { SubmitForm } from './SubmitForm';
-import { Button, Input } from '@team-entry/design_system';
+import { Button, Input, Text } from '@team-entry/design_system';
 import { useForm } from '@/hooks/useForm';
 import { useSignUp } from '@/apis/signup';
 import styled from '@emotion/styled';
 import { RedirectURL } from '@/apis/login';
 
-export const InsertUserInfo = ({ redirectURL }: RedirectURL) => {
+interface IInsertUserInfo extends RedirectURL {
+  isStudent: boolean;
+}
+
+export const InsertUserInfo = ({ isStudent, redirectURL }: IInsertUserInfo) => {
   const { token } = useToken();
   const { getUserData } = useVerifyUserInfo(token.mdl_tkn);
 
@@ -37,23 +41,30 @@ export const InsertUserInfo = ({ redirectURL }: RedirectURL) => {
         placeholder=""
       />
       <Input
-        type="text"
+        type="tel"
         value={phone_number}
         label="전화번호"
         width="100%"
         placeholder=""
         margin={['top', 16]}
       />
-      <Input
-        type="password"
-        value={state.password}
-        name="password"
-        label="비밀번호"
-        width="100%"
-        placeholder="비밀번호"
-        margin={['top', 16]}
-        onChange={onChangeInputValue}
-      />
+      <div>
+        <Input
+          type="password"
+          value={state.password}
+          name="password"
+          label="비밀번호"
+          width="100%"
+          placeholder="비밀번호"
+          margin={['top', 16]}
+          onChange={onChangeInputValue}
+        />
+        <Text color="black500" size="body3" margin={['top', 10]}>
+          영문 대소문자, 숫자, 특수문자가 포함되어야 하며
+          <br />
+          8자 이상, 32자 이내여야 합니다
+        </Text>
+      </div>
       <Input
         type="password"
         name="rePassword"
@@ -70,6 +81,7 @@ export const InsertUserInfo = ({ redirectURL }: RedirectURL) => {
           signUp.mutate({
             telephone_number: phone_number,
             password: state.password,
+            is_student: isStudent,
           });
         }}
         color="orange"
