@@ -1,6 +1,6 @@
 import axios from 'axios';
 
 export const instance = axios.create({
-  baseURL: 'https://rolls.entrydsm.hs.kr/',
+  baseURL: process.env.REACT_APP_BASE_URL,
   timeout: 10000,
 });
