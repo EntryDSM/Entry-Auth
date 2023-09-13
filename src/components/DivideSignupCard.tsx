@@ -29,7 +29,7 @@ const DivideSignupCard = ({
       <Text size="body2" color="black" align="center">
         {isStudent ? '학생 본인 명의로' : '학부모 명의로'}
         <br />
-        Enyry에 가입합니다
+        Entry에 가입합니다
       </Text>
       <Button
         kind="rounded"
