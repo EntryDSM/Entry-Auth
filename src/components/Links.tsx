@@ -8,10 +8,14 @@ interface IAuthLinks {
 export const AuthLinks = ({ isAdmin }: IAuthLinks) => {
   return (
     <_Links>
-      <Link to="/sign-up" id="sign-up">
-        회원가입
-      </Link>
-      <hr />
+      {!isAdmin && (
+        <>
+          <Link to="/sign-up" id="sign-up">
+            회원가입
+          </Link>
+          <hr />
+        </>
+      )}
       <Link to="/change-pwd">비밀번호 찾기</Link>
       <hr />
       <Link to={isAdmin ? '/login' : '/admin-login'}>
