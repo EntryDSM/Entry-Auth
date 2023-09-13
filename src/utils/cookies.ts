@@ -2,7 +2,7 @@ import { COOKIE_DOMAIN } from '@/constant/env';
 import { Cookies } from 'react-cookie';
 import { CookieSetOptions } from 'universal-cookie';
 
-type CookieItem = 'access_token' | 'refresh_token';
+type CookieItem = 'access_token' | 'refresh_token' | 'authority';
 
 const cookies = new Cookies();
 

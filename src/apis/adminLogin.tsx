@@ -1,7 +1,8 @@
 import { useMutation } from 'react-query';
 import { instance } from './axios';
-import { setTokens } from '@/utils/cookies';
+import { setCookies, setTokens } from '@/utils/cookies';
 import { AuthResponse } from './login';
+import { COOKIE_DOMAIN } from '@/constant/env';
 
 interface AdminLoginProps {
   id: string;
@@ -22,6 +23,12 @@ export const useAdminLogin = (redirectURL: string) => {
       onSuccess: (res) => {
         window.location.href = redirectURL;
         setTokens(res.data.access_token, res.data.refresh_token);
+        setCookies('authority', 'admin', {
+          path: '/',
+          secure: true,
+          sameSite: 'none',
+          domain: COOKIE_DOMAIN,
+        });
       },
     },
   );

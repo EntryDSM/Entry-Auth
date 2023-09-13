@@ -1,6 +1,7 @@
 import { useMutation } from 'react-query';
 import { instance } from './axios';
-import { setTokens } from '@/utils/cookies';
+import { setCookies, setTokens } from '@/utils/cookies';
+import { COOKIE_DOMAIN } from '@/constant/env';
 
 export interface RedirectURL {
   redirectURL: string;
@@ -29,6 +30,12 @@ export const useLogin = (redirectURL: string) => {
       onSuccess: (res) => {
         window.location.href = redirectURL;
         setTokens(res.data.access_token, res.data.refresh_token);
+        setCookies('authority', 'user', {
+          path: '/',
+          secure: true,
+          sameSite: 'none',
+          domain: COOKIE_DOMAIN,
+        });
       },
     },
   );
