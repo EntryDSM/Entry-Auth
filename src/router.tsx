@@ -9,8 +9,8 @@ import { Verify } from './pages/Verify';
 import { getQueryValues } from './utils/getQueryValues';
 
 export const Router = () => {
-  const redirectURL = 'https://www.entrydsm.hs.kr';
-  // getQueryValues().get('redirect_url') || 'https://www.entrydsm.hs.kr';
+  const redirectURL =
+    getQueryValues().get('redirect_url') || 'https://www.entrydsm.hs.kr';
 
   return (
     <BrowserRouter>

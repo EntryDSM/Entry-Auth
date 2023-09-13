@@ -54,16 +54,15 @@ export const Login = ({ redirectURL, isAdmin = false }: ILogin) => {
         <_Button
           kind="contained"
           onClick={() =>
-            isAdmin
+            (isAdmin
               ? adminLogin({
-                  id: state.telephone_number,
-                  password: state.password,
-                })
+                id: state.telephone_number,
+                password: state.password,
+              })
               : userLogin({
-                  telephone_number: state.telephone_number.replace(/-/g, ''),
-                  password: state.password,
-                })
-          }
+                telephone_number: state.telephone_number.replace(/-/g, ''),
+                password: state.password,
+              }))}
           margin={['top', 45]}
           color={isAdmin ? 'green' : 'orange'}
           disabled={!isTruthValues([state.telephone_number, state.password])}
@@ -75,7 +74,7 @@ export const Login = ({ redirectURL, isAdmin = false }: ILogin) => {
           kind="outlined"
           color="black"
           onClick={() => {
-            window.location.href = 'https://wwww.entrydsm.hs.kr';
+            window.location.href = 'https://www.entrydsm.hs.kr';
           }}
         >
           홈으로 돌아가기
