@@ -75,7 +75,7 @@ export const Login = ({ redirectURL, isAdmin = false }: ILogin) => {
           kind="outlined"
           color="black"
           onClick={() => {
-            window.location.href = redirectURL;
+            window.location.href = 'https://wwww.entrydsm.hs.kr';
           }}
         >
           홈으로 돌아가기
