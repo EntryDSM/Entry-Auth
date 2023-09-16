@@ -85,7 +85,11 @@ export const InsertUserInfo = ({ isStudent, redirectURL }: IInsertUserInfo) => {
           });
         }}
         color="orange"
-        disabled={state.rePassword !== state.password}
+        disabled={
+          state.rePassword !== state.password &&
+          !!state.rePassword &&
+          !!state.password
+        }
       >
         회원가입
       </_Button>
