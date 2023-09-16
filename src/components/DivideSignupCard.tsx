@@ -27,8 +27,7 @@ const DivideSignupCard = ({
         </Text>
       </_Container>
       <Text size="body2" color="black" align="center">
-        {isStudent ? '학생 본인 명의로' : '학부모 명의로'}
-        <br />
+        {isStudent ? '학생 본인 명의로 ' : '학부모 명의로 '}
         Entry에 가입합니다
       </Text>
       <Button
@@ -37,42 +36,42 @@ const DivideSignupCard = ({
         onClick={
           isStudent
             ? () => {
-              setIsClick(true);
-              setIsStudent(true);
-            }
+                setIsClick(true);
+                setIsStudent(true);
+              }
             : () =>
-              render({
-                title: '안내',
-                content:
+                render({
+                  title: '안내',
+                  content:
                     '학부모 명의로 가입 시 원서 접수 서류에 \n 학부모 연락처가 입력됩니다.',
-                button: (
-                  <HStack gap={10}>
-                    <_SelectButton
-                      kind="contained"
-                      color="orange"
-                      onClick={() => {
-                        close();
-                        setIsClick(true);
-                        setIsStudent(false);
-                      }}
-                    >
-                      진행
-                    </_SelectButton>
-                    <_SelectButton
-                      kind="outlined"
-                      color="black"
-                      onClick={() => {
-                        close();
-                      }}
-                    >
-                      닫기
-                    </_SelectButton>
-                  </HStack>
-                ),
-              })
+                  button: (
+                    <HStack gap={10}>
+                      <_SelectButton
+                        kind="contained"
+                        color="orange"
+                        onClick={() => {
+                          close();
+                          setIsClick(true);
+                          setIsStudent(false);
+                        }}
+                      >
+                        진행
+                      </_SelectButton>
+                      <_SelectButton
+                        kind="outlined"
+                        color="black"
+                        onClick={() => {
+                          close();
+                        }}
+                      >
+                        닫기
+                      </_SelectButton>
+                    </HStack>
+                  ),
+                })
         }
       >
-        선택
+        가입
       </Button>
     </_Wrapper>
   );
