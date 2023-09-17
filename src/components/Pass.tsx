@@ -15,6 +15,17 @@ export const Pass = () => {
     }
   }, [moduleToken]);
 
+  const blockReload = (event: BeforeUnloadEvent) => {
+    event.preventDefault();
+    // eslint-disable-next-line no-param-reassign
+    event.returnValue = '';
+  };
+
+  useEffect(() => {
+    window.addEventListener('beforeunload', blockReload);
+    return () => window.removeEventListener('beforeunload', blockReload);
+  }, []);
+
   if (!moduleToken) return null;
   return (
     <form

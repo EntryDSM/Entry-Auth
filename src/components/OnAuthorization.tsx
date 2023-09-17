@@ -9,7 +9,7 @@ export const OnAuthorization = () => {
   const { token } = useToken();
 
   const goToPreviosPage = () => {
-    if (token.mdl_tkn) window.open(`/pass?mdl_tkn=${token.mdl_tkn}`, '_blank');
+    if (token.mdl_tkn) window.open(`/pass?mdl_tkn=${token.mdl_tkn}`, 'popup');
     else navigate('/login');
   };
 
