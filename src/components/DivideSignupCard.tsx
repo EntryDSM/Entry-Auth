@@ -2,7 +2,7 @@
 import React from 'react';
 import SchoolBag from '@/assets/SchoolBag';
 import styled from '@emotion/styled';
-import { Text, Button, theme } from '@team-entry/design_system';
+import { Text, Button, theme, VStack } from '@team-entry/design_system';
 
 interface IDivideSignupCard {
   setIsStudent: React.Dispatch<React.SetStateAction<boolean>>;
@@ -12,28 +12,21 @@ interface IDivideSignupCard {
 const DivideSignupCard = ({ setIsStudent, setIsClick }: IDivideSignupCard) => {
   return (
     <_Wrapper>
-      <_Container>
-        <_IconWrapper>
-          <SchoolBag />
-        </_IconWrapper>
-        <Text size="title2" color="black">
-          학생 본인
-        </Text>
-      </_Container>
-      <Text size="body2" color="black" align="center">
+      <Text size="body2" color="black600" align="center">
         {'학생 본인 명의로 '}
         Entry에 가입합니다
       </Text>
-      <Button
-        kind="rounded"
-        color="orange"
-        onClick={() => {
-          setIsClick(true);
-          setIsStudent(true);
-        }}
-      >
-        가입
-      </Button>
+      <VStack width={300}>
+        <Button
+          color="orange"
+          onClick={() => {
+            setIsClick(true);
+            setIsStudent(true);
+          }}
+        >
+          가입
+        </Button>
+      </VStack>
     </_Wrapper>
   );
 };

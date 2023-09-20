@@ -18,14 +18,10 @@ const DivideSignup = ({ setIsStudent }: IDivideSignup) => {
   return (
     <>
       <Wrapper>
-        <DivideSignupCard
-          isStudent
-          setIsStudent={setIsStudent}
-          setIsClick={setIsClick}
-        />
+        <DivideSignupCard setIsStudent={setIsStudent} setIsClick={setIsClick} />
       </Wrapper>
       <Stack justify="center" gap={12} margin={[0, 'auto']}>
-        <Text color="gray600" size="body1">
+        <Text color="black600" size="body1">
           학생 명의로 가입할 수 없나요?
         </Text>
         <Text
