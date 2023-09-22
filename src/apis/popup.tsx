@@ -24,7 +24,11 @@ export const useOpenPopUp = () => {
 
         setToken(mdl_tknValue);
 
-        window.open(`/pass?mdl_tkn=${mdl_tknValue}`, '_blank');
+        window.open(
+          `/pass?mdl_tkn=${mdl_tknValue}`,
+          '_blank',
+          'resizable=no,width=570,height=830,left=50,top=50',
+        );
       },
     },
   );
