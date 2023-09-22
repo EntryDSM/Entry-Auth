@@ -39,6 +39,7 @@ export const Login = ({ redirectURL, isAdmin = false }: ILogin) => {
           name="telephone_number"
           onChange={onChangeInputValue}
           value={state.telephone_number}
+          maxLength={13}
         />
         <Input
           margin={['top', 35]}
@@ -50,19 +51,21 @@ export const Login = ({ redirectURL, isAdmin = false }: ILogin) => {
           name="password"
           onChange={onChangeInputValue}
           value={state.password}
+          maxLength={32}
         />
         <_Button
           kind="contained"
           onClick={() =>
-            (isAdmin
+            isAdmin
               ? adminLogin({
-                id: state.telephone_number,
-                password: state.password,
-              })
+                  id: state.telephone_number,
+                  password: state.password,
+                })
               : userLogin({
-                telephone_number: state.telephone_number.replace(/-/g, ''),
-                password: state.password,
-              }))}
+                  telephone_number: state.telephone_number.replace(/-/g, ''),
+                  password: state.password,
+                })
+          }
           margin={['top', 45]}
           color={isAdmin ? 'green' : 'orange'}
           disabled={!isTruthValues([state.telephone_number, state.password])}

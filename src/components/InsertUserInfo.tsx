@@ -58,6 +58,7 @@ export const InsertUserInfo = ({ isStudent, redirectURL }: IInsertUserInfo) => {
           placeholder="비밀번호"
           margin={['top', 16]}
           onChange={onChangeInputValue}
+          maxLength={32}
         />
         <Text color="black500" size="body3" margin={['top', 10]}>
           영문 대소문자, 숫자, 특수문자가 포함되어야 하며
@@ -74,6 +75,7 @@ export const InsertUserInfo = ({ isStudent, redirectURL }: IInsertUserInfo) => {
         placeholder="비밀번호 확인"
         margin={['top', 16]}
         onChange={onChangeInputValue}
+        maxLength={32}
       />
       <_Button
         margin={['top', 32]}

@@ -38,6 +38,7 @@ export const ReSetPwd = ({ telephone_number }: Props) => {
           onChange={onChangeInputValue}
           value={state.new_password}
           margin={['top', 33]}
+          maxLength={32}
         />
         <Text color="black500" size="body3" margin={['top', 10]}>
           영문 대소문자, 숫자, 특수문자가 포함되어야 하며
@@ -54,6 +55,7 @@ export const ReSetPwd = ({ telephone_number }: Props) => {
         onChange={onChangeInputValue}
         value={state.check_password}
         margin={['top', 33]}
+        maxLength={32}
       />
       <_Button
         kind="contained"
@@ -62,7 +64,8 @@ export const ReSetPwd = ({ telephone_number }: Props) => {
           resetPwd.mutate({
             telephone_number,
             new_password: state.new_password,
-          })}
+          })
+        }
         margin={['top', 33]}
         disabled={state.check_password !== state.new_password}
       >
