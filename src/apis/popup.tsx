@@ -33,12 +33,6 @@ export const useOpenPopUp = () => {
           'popup',
           `resizable=no,width=${width},height=${height},left=${left},top=${top}}`,
         );
-
-        // popup!.onbeforeunload = function () {
-        //   alert('팝업이 닫혔습니다');
-        //   popup!.close();
-        //   // clearToken();
-        // };
       },
     },
   );

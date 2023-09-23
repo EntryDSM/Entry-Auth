@@ -16,9 +16,11 @@ export const ChangePwd = () => {
       component = (
         <ReSetPwd telephone_number={getUserData.data.data.phone_number} />
       );
-    } else if (token.mdl_tkn) {
-      component = <OnAuthorization />;
-    } else {
+    }
+    //  else if (token.mdl_tkn) {
+    //   component = <OnAuthorization />;
+    // }
+    else {
       component = (
         <GoToAuthorization text="본인 인증후 비밀번호를 재설정해주세요" />
       );
