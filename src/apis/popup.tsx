@@ -1,9 +1,10 @@
 import { useMutation } from 'react-query';
 import { instance } from './axios';
 import { useToken } from '@/hooks/useToken';
+import { useNavigate } from 'react-router';
 
 export const useOpenPopUp = () => {
-  const { setToken } = useToken();
+  const { setToken, clearToken } = useToken();
 
   const openPopUp = useMutation(
     (redirectUrl: string) =>
@@ -24,11 +25,20 @@ export const useOpenPopUp = () => {
 
         setToken(mdl_tknValue);
 
-        window.open(
+        const width = 500;
+        const height = 700;
+        const left = window.screenX + (window.outerWidth - width) / 2;
+        const top = window.screenY + (window.outerHeight - height) / 2;
+        var popup = window.open(
           `/pass?mdl_tkn=${mdl_tknValue}`,
-          '_blank',
-          'resizable=no,width=570,height=830,left=50,top=50',
+          'popup',
+          `resizable=no,width=${width},height=${height},left=${left},top=${top}}`,
         );
+
+        popup!.onunload = function () {
+          alert('팝업이 닫혔습니다');
+          clearToken();
+        };
       },
     },
   );
