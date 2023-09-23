@@ -1,7 +1,6 @@
 import { useMutation } from 'react-query';
 import { instance } from './axios';
 import { useToken } from '@/hooks/useToken';
-import { useNavigate } from 'react-router';
 
 export const useOpenPopUp = () => {
   const { setToken, clearToken } = useToken();
@@ -35,9 +34,10 @@ export const useOpenPopUp = () => {
           `resizable=no,width=${width},height=${height},left=${left},top=${top}}`,
         );
 
-        popup!.onunload = function () {
+        popup!.onbeforeunload = function () {
           alert('팝업이 닫혔습니다');
-          clearToken();
+          popup!.close();
+          // clearToken();
         };
       },
     },
