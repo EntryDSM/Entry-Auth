@@ -28,17 +28,17 @@ export const useOpenPopUp = () => {
         const height = 700;
         const left = window.screenX + (window.outerWidth - width) / 2;
         const top = window.screenY + (window.outerHeight - height) / 2;
-        var popup = window.open(
+        window.open(
           `/pass?mdl_tkn=${mdl_tknValue}`,
           'popup',
           `resizable=no,width=${width},height=${height},left=${left},top=${top}}`,
         );
 
-        popup!.onbeforeunload = function () {
-          alert('팝업이 닫혔습니다');
-          popup!.close();
-          // clearToken();
-        };
+        // popup!.onbeforeunload = function () {
+        //   alert('팝업이 닫혔습니다');
+        //   popup!.close();
+        //   // clearToken();
+        // };
       },
     },
   );

@@ -23,9 +23,11 @@ export const SignUp = ({ redirectURL }: RedirectURL) => {
       component = (
         <InsertUserInfo isStudent={isStudent} redirectURL={redirectURL} />
       );
-    } else if (token.mdl_tkn) {
-      component = <OnAuthorization />;
-    } else {
+    }
+    //  else if (token.mdl_tkn) {
+    //   component = <OnAuthorization />;
+    // }
+    else {
       component = <DivideSignup setIsStudent={setIsStudent} />;
     }
     return component;
