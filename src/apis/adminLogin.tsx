@@ -3,6 +3,7 @@ import { instance } from './axios';
 import { setCookies, setTokens } from '@/utils/cookies';
 import { AuthResponse } from './login';
 import { COOKIE_DOMAIN } from '@/constant/env';
+import { AxiosError } from 'axios';
 
 interface AdminLoginProps {
   id: string;
@@ -17,8 +18,11 @@ export const useAdminLogin = (redirectURL: string) => {
         password,
       }),
     {
-      onError: () => {
+      onError: (res: AxiosError<AxiosError>) => {
+        switch (res.response?.data.message) {
+        }
         alert('로그인에 실패하였습니다.');
+        console.log(res);
       },
       onSuccess: (res) => {
         window.location.href = redirectURL;

@@ -88,8 +88,8 @@ export const InsertUserInfo = ({ isStudent, redirectURL }: IInsertUserInfo) => {
         }}
         color="orange"
         disabled={
-          state.rePassword !== state.password &&
-          !state.rePassword &&
+          state.rePassword !== state.password ||
+          !state.rePassword ||
           !state.password
         }
       >
