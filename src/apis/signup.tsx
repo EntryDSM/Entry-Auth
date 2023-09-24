@@ -18,13 +18,16 @@ export const useSignUp = (redirectURL: string) => {
     }) => instance.post<AuthResponse>('/user', body),
     {
       onError: (res: AxiosError<AxiosError>) => {
-        console.log(res);
         switch (res.response?.data.message) {
           case 'password는 소문자, 숫자, 특수문자가 포함되어야 합니다.':
-            Toast('비밀번호가 틀렸습니다.', { type: 'error' });
+            Toast('비밀번호는 소문자, 숫자, 특수문자가 포함되어야 합니다.', {
+              type: 'error',
+            });
+            break;
+          default:
+            Toast('회원가입에 실패하였습니다.', { type: 'error' });
             break;
         }
-        alert('회원가입에 실패하였습니다.');
       },
       onSuccess: (res) => {
         setTokens(res.data.access_token, res.data.refresh_token);
