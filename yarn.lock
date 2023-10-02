@@ -4455,16 +4455,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@team-entry/design_system@npm:^1.0.103":
-  version: 1.0.103
-  resolution: "@team-entry/design_system@npm:1.0.103"
+"@team-entry/design_system@npm:^1.1.12":
+  version: 1.1.12
+  resolution: "@team-entry/design_system@npm:1.1.12"
   dependencies:
     "@emotion/react": ^11.10.5
     "@emotion/styled": ^11.10.5
     react: ^18.2.0
     react-dom: ^18.2.0
     react-toastify: ^9.1.3
-  checksum: 094e640474008424393582d71713580d13f5948bfccffd35d435c28750eb970db8a66df8251d3b3296bb8d3c7cb4de96df5909490bbee7d5f7d83d57747ec9b1
+  checksum: fd06a0e36354a627156c74e18b8666873c28191b17afb35be98f9f20b7b5a886ab67feddf6e2bd22d447408a31187024ec12326205501fdc0389ccb9e439f9cf
   languageName: node
   linkType: hard
 
@@ -8126,7 +8126,7 @@ __metadata:
     "@emotion/babel-plugin": ^11.10.5
     "@emotion/react": ^11.10.5
     "@emotion/styled": ^11.10.5
-    "@team-entry/design_system": ^1.0.103
+    "@team-entry/design_system": ^1.1.12
     "@types/jest": ^29.5.2
     "@types/react": ^18.0.26
     "@types/react-dom": ^18.0.10
