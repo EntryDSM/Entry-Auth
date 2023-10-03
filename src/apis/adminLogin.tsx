@@ -36,7 +36,7 @@ export const useAdminLogin = (redirectURL: string) => {
         }
       },
       onSuccess: (res) => {
-        window.location.href = redirectURL;
+        window.location.href = 'https://admin.entrydsm.hs.kr';
         setTokens(res.data.access_token, res.data.refresh_token);
         setCookies('authority', 'admin', {
           path: '/',
