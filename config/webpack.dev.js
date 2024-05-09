@@ -19,6 +19,11 @@ module.exports = {
     new webpack.EnvironmentPlugin({
       NODE_ENV: 'development',
     }),
+    new webpack.DefinePlugin({
+      'process.env.REACT_APP_BASE_URL': JSON.stringify(
+        process.env.REACT_APP_BASE_URL,
+      ),
+    }),
   ],
   module: {
     rules: [
