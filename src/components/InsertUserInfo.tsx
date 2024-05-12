@@ -15,9 +15,9 @@ export const InsertUserInfo = ({ isStudent, redirectURL }: IInsertUserInfo) => {
   const { token } = useToken();
   const { getUserData } = useVerifyUserInfo(token.mdl_tkn);
 
-  const { name, phone_number } = getUserData.data?.data || {
+  const { name, phoneNumber } = getUserData.data?.data || {
     name: '',
-    phone_number: '',
+    phoneNumber: '',
   };
 
   const { onChangeInputValue, state } = useForm<{
@@ -42,7 +42,7 @@ export const InsertUserInfo = ({ isStudent, redirectURL }: IInsertUserInfo) => {
       />
       <Input
         type="tel"
-        value={phone_number}
+        value={phoneNumber}
         label="전화번호"
         width="100%"
         placeholder=""
@@ -81,7 +81,7 @@ export const InsertUserInfo = ({ isStudent, redirectURL }: IInsertUserInfo) => {
         margin={['top', 32]}
         onClick={() => {
           signUp.mutate({
-            telephone_number: phone_number,
+            telephone_number: phoneNumber,
             password: state.password,
             is_student: isStudent,
           });

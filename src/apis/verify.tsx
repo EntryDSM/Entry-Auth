@@ -5,7 +5,7 @@ import { useEffect, useState } from 'react';
 
 interface UserVerifyInfo {
   name: string;
-  phone_number: string;
+  phoneNumber: string;
 }
 
 export const useVerifyUserInfo = (mdl_tkn: string | null) => {
