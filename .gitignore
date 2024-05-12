@@ -1,6 +1,5 @@
 .idea
 /node_modules
-.env
 .DS_Store
 dist
 
@@ -9,3 +8,5 @@ dist
 .yarn/build-state.yml
 .yarn/install-state.gz
 .pnp.*
+*.lock
+*.env
