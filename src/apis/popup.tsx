@@ -9,7 +9,7 @@ export const useOpenPopUp = () => {
     (redirectUrl: string) =>
       // eslint-disable-next-line
       instance.post<string>('/user/verify/popup', {
-        redirect_url: redirectUrl,
+        redirectUrl,
       }),
     {
       onSuccess: (res) => {
