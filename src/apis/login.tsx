@@ -9,20 +9,20 @@ export interface RedirectURL {
   redirectURL: string;
 }
 export interface AuthResponse {
-  access_token: string;
-  refresh_token: string;
+  accessToken: string;
+  refreshToken: string;
 }
 
 interface LoginProps {
-  telephone_number: string;
+  phoneNumber: string;
   password: string;
 }
 
 export const useLogin = (redirectURL: string) => {
   return useMutation(
-    ({ telephone_number, password }: LoginProps) =>
+    ({ phoneNumber, password }: LoginProps) =>
       instance.post<AuthResponse>('/user/auth', {
-        telephone_number,
+        phoneNumber,
         password,
       }),
     {
@@ -43,7 +43,7 @@ export const useLogin = (redirectURL: string) => {
       },
       onSuccess: (res) => {
         window.location.href = redirectURL;
-        setTokens(res.data.access_token, res.data.refresh_token);
+        setTokens(res.data.accessToken, res.data.refreshToken);
         setCookies('authority', 'user', {
           path: '/',
           secure: true,

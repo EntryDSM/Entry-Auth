@@ -13,11 +13,8 @@ export const useSignUp = (redirectURL: string) => {
   const navigate = useNavigate();
 
   const signUp = useMutation(
-    (body: {
-      telephone_number: string;
-      password: string;
-      is_student: boolean;
-    }) => instance.post<AuthResponse>('/user', body),
+    (body: { phoneNumber: string; password: string; is_student: boolean }) =>
+      instance.post<AuthResponse>('/user', body),
     {
       onError: (res: AxiosError<AxiosError>) => {
         switch (res.response?.data.message) {
@@ -39,7 +36,7 @@ export const useSignUp = (redirectURL: string) => {
         }
       },
       onSuccess: (res) => {
-        setTokens(res.data.access_token, res.data.refresh_token);
+        setTokens(res.data.accessToken, res.data.refreshToken);
         render({
           title: '회원가입',
           icon: <SuccessIcon />,

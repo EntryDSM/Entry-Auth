@@ -81,7 +81,7 @@ export const InsertUserInfo = ({ isStudent, redirectURL }: IInsertUserInfo) => {
         margin={['top', 32]}
         onClick={() => {
           signUp.mutate({
-            telephone_number: phoneNumber,
+            phoneNumber,
             password: state.password,
             is_student: isStudent,
           });

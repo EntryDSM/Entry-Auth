@@ -14,7 +14,7 @@ interface ILogin extends RedirectURL {
 
 export const Login = ({ redirectURL, isAdmin = false }: ILogin) => {
   const { state, onChangeInputValue } = useForm({
-    telephone_number: '',
+    phoneNumber: '',
     password: '',
   });
 
@@ -36,9 +36,9 @@ export const Login = ({ redirectURL, isAdmin = false }: ILogin) => {
           label={isAdmin ? '아이디' : '전화번호'}
           type={isAdmin ? 'text' : 'tel'}
           placeholder={isAdmin ? '아이디' : '전화번호'}
-          name="telephone_number"
+          name="phoneNumber"
           onChange={onChangeInputValue}
-          value={state.telephone_number}
+          value={state.phoneNumber}
           maxLength={13}
         />
         <Input
@@ -56,19 +56,18 @@ export const Login = ({ redirectURL, isAdmin = false }: ILogin) => {
         <_Button
           kind="contained"
           onClick={() =>
-            isAdmin
+            (isAdmin
               ? adminLogin({
-                  id: state.telephone_number,
-                  password: state.password,
-                })
+                id: state.phoneNumber,
+                password: state.password,
+              })
               : userLogin({
-                  telephone_number: state.telephone_number.replace(/-/g, ''),
-                  password: state.password,
-                })
-          }
+                phoneNumber: state.phoneNumber.replace(/-/g, ''),
+                password: state.password,
+              }))}
           margin={['top', 45]}
           color={isAdmin ? 'green' : 'orange'}
-          disabled={!isTruthValues([state.telephone_number, state.password])}
+          disabled={!isTruthValues([state.phoneNumber, state.password])}
         >
           로그인
         </_Button>
