@@ -58,7 +58,7 @@ export const Login = ({ redirectURL, isAdmin = false }: ILogin) => {
           onClick={() =>
             (isAdmin
               ? adminLogin({
-                id: state.phoneNumber,
+                adminId: state.phoneNumber,
                 password: state.password,
               })
               : userLogin({

@@ -7,15 +7,15 @@ import { AxiosError } from 'axios';
 import { Toast } from '@team-entry/design_system';
 
 interface AdminLoginProps {
-  id: string;
+  adminId: string;
   password: string;
 }
 
 export const useAdminLogin = (redirectURL: string) => {
   return useMutation(
-    ({ id, password }: AdminLoginProps) =>
+    ({ adminId, password }: AdminLoginProps) =>
       instance.post<AuthResponse>('/admin/auth', {
-        id,
+        adminId,
         password,
       }),
     {
