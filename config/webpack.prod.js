@@ -28,6 +28,11 @@ module.exports = {
     new webpack.EnvironmentPlugin({
       NODE_ENV: 'production',
     }),
+    new webpack.DefinePlugin({
+      'process.env.REACT_APP_BASE_URL': JSON.stringify(
+        process.env.REACT_APP_BASE_URL,
+      ),
+    }),
   ],
   optimization: {
     usedExports: true,
