@@ -8,15 +8,15 @@ import { removeLocalStorageItem } from '@/utils/localstorage';
 import { useNavigate } from 'react-router';
 
 interface Props {
-  telephone_number: string;
+  phoneNumber: string;
 }
 
-export const ReSetPwd = ({ telephone_number }: Props) => {
+export const ReSetPwd = ({ phoneNumber }: Props) => {
   const { state, onChangeInputValue } = useForm<{
-    new_password: string;
+    newPassword: string;
     check_password: string;
   }>({
-    new_password: '',
+    newPassword: '',
     check_password: '',
   });
   const { resetPwd } = useResetPwd();
@@ -24,7 +24,7 @@ export const ReSetPwd = ({ telephone_number }: Props) => {
 
   useEffect(() => removeLocalStorageItem('isVerified'), []);
 
-  if (!telephone_number) navigate('/change-pwd');
+  if (!phoneNumber) navigate('/change-pwd');
 
   return (
     <SubmitForm>
@@ -34,9 +34,9 @@ export const ReSetPwd = ({ telephone_number }: Props) => {
           placeholder="새로 사용할 비밀번호를 입력하세요"
           label="새 비밀번호"
           width="100%"
-          name="new_password"
+          name="newPassword"
           onChange={onChangeInputValue}
-          value={state.new_password}
+          value={state.newPassword}
           margin={['top', 33]}
           maxLength={32}
         />
@@ -62,12 +62,11 @@ export const ReSetPwd = ({ telephone_number }: Props) => {
         color="orange"
         onClick={() =>
           resetPwd.mutate({
-            telephone_number,
-            new_password: state.new_password,
-          })
-        }
+            phoneNumber,
+            newPassword: state.newPassword,
+          })}
         margin={['top', 33]}
-        disabled={state.check_password !== state.new_password}
+        disabled={state.check_password !== state.newPassword}
       >
         확인
       </_Button>

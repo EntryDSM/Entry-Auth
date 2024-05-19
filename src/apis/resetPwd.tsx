@@ -6,8 +6,8 @@ import { Button } from '@team-entry/design_system';
 import { useNavigate } from 'react-router';
 
 export interface ResetPwdRequest {
-  telephone_number: string;
-  new_password: string;
+  phoneNumber: string;
+  newPassword: string;
 }
 
 export const useResetPwd = () => {
