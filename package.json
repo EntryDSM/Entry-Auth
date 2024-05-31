@@ -5,7 +5,7 @@
   "license": "MIT",
   "scripts": {
     "dev": "env-cmd webpack serve --mode development --config ./config/webpack.config.js",
-    "build": "env-cmd webpack --mode production --progress --config ./config/webpack.config.js",
+    "build": "webpack serve --mode production --progress --config ./config/webpack.config.js",
     "prepare": "husky install",
     "lint": "npx eslint --ext .tsx --ext .ts .",
     "lint:fix": "npx eslint --ext .tsx --ext .ts . --fix",
