@@ -1,30 +1,21 @@
-const path = require('path');
 const webpack = require('webpack');
-
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const TerserPlugin = require('terser-webpack-plugin');
-const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 
 module.exports = {
   mode: 'production',
-  devtool: 'cheap-module-source-map',
+  devtool: 'inline-source-map',
+  devServer: {
+    open: false,
+    hot: true,
+    compress: true,
+    port: 3000,
+    historyApiFallback: true,
+    liveReload: true,
+  },
   output: {
     filename: '[name].[contenthash].js',
-    path: path.resolve(__dirname, '../dist'),
-    assetModuleFilename: 'static/media/[hash][ext][query]',
-    publicPath: './',
-    clean: true,
-  },
-  module: {
-    rules: [
-      {
-        test: /\.(sa|sc|c)ss$/i,
-        use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader'],
-      },
-    ],
+    publicPath: '/',
   },
   plugins: [
-    new MiniCssExtractPlugin(),
     new webpack.EnvironmentPlugin({
       NODE_ENV: 'production',
     }),
@@ -34,26 +25,12 @@ module.exports = {
       ),
     }),
   ],
-  optimization: {
-    usedExports: true,
-    minimize: true,
-    minimizer: [
-      new TerserPlugin({
-        terserOptions: {
-          compress: {
-            drop_console: true,
-          },
-        },
-      }),
-      new CssMinimizerPlugin(),
+  module: {
+    rules: [
+      {
+        test: /\.(sa|sc|c)ss$/i,
+        use: ['style-loader', 'css-loader', 'sass-loader'],
+      },
     ],
-    splitChunks: {
-      chunks: 'all',
-    },
-  },
-  performance: {
-    hints: false,
-    maxEntrypointSize: 512000,
-    maxAssetSize: 512000,
   },
 };
