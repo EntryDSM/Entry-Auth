@@ -3,6 +3,7 @@ import { RedirectURL, useLogin } from '@/apis/login';
 import { AuthTemplate } from '@/components/AuthTemplate';
 import { AuthLinks } from '@/components/Links';
 import { SubmitForm } from '@/components/SubmitForm';
+import { MAIN_URL } from '@/constant/env';
 import { useForm } from '@/hooks/useForm';
 import { isTruthValues } from '@/utils/isTruthValues';
 import styled from '@emotion/styled';
@@ -76,7 +77,7 @@ export const Login = ({ redirectURL, isAdmin = false }: ILogin) => {
           kind="outlined"
           color="black"
           onClick={() => {
-            window.location.href = 'https://www.entrydsm.hs.kr';
+            window.location.href = `${MAIN_URL}`;
           }}
         >
           홈으로 돌아가기
