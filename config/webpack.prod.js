@@ -10,6 +10,7 @@ module.exports = {
     port: 3000,
     historyApiFallback: true,
     liveReload: true,
+    allowedHosts: "all"
   },
   output: {
     filename: '[name].[contenthash].js',
