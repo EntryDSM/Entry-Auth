@@ -2,7 +2,7 @@ import { useMutation } from 'react-query';
 import { instance } from './axios';
 import { setCookies, setTokens } from '@/utils/cookies';
 import { AuthResponse } from './login';
-import { COOKIE_DOMAIN } from '@/constant/env';
+import { ADMIN_URL, COOKIE_DOMAIN } from '@/constant/env';
 import { AxiosError } from 'axios';
 import { Toast } from '@team-entry/design_system';
 
@@ -36,7 +36,7 @@ export const useAdminLogin = (redirectURL: string) => {
         }
       },
       onSuccess: (res) => {
-        window.location.href = 'https://admin.entrydsm.hs.kr';
+        window.location.href = `${ADMIN_URL}`;
         setTokens(res.data.accessToken, res.data.refreshToken);
         setCookies('authority', 'admin', {
           path: '/',
