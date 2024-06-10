@@ -1,5 +1,5 @@
 import { useOpenPopUp } from '@/apis/popup';
-import { BASE_URL } from '@/constant/env';
+import { AUTH_URL } from '@/constant/env';
 import styled from '@emotion/styled';
 import { Button, Text } from '@team-entry/design_system';
 
@@ -10,7 +10,7 @@ interface Props {
 export const GoToAuthorization = ({ text }: Props) => {
   const { openPopUp } = useOpenPopUp();
   const goToAuthorization = () => {
-    openPopUp.mutate(`${BASE_URL}/verify`);
+    openPopUp.mutate(`${AUTH_URL}/verify`);
   };
 
   return (
