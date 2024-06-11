@@ -1,4 +1,5 @@
 const webpack = require('webpack');
+const path = require('path');
 
 module.exports = {
   mode: 'production',
@@ -10,11 +11,7 @@ module.exports = {
     port: 3000,
     historyApiFallback: true,
     liveReload: true,
-<<<<<<< HEAD
     allowedHosts: 'all',
-=======
-    allowedHosts: "all"
->>>>>>> main
   },
   output: {
     filename: '[name].[contenthash].js',
