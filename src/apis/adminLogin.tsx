@@ -2,16 +2,17 @@ import { useMutation } from 'react-query';
 import { instance } from './axios';
 import { setCookies, setTokens } from '@/utils/cookies';
 import { AuthResponse } from './login';
-import { ADMIN_URL, COOKIE_DOMAIN } from '@/constant/env';
+import { ADMIN_URL, COOKIE_DOMAIN, MAIN_URL } from '@/constant/env';
 import { AxiosError } from 'axios';
 import { Toast } from '@team-entry/design_system';
+import { checkLocalPort } from '@/utils/checkLocalPort';
 
 interface AdminLoginProps {
   adminId: string;
   password: string;
 }
 
-export const useAdminLogin = (redirectURL: string) => {
+export const useAdminLogin = () => {
   return useMutation(
     ({ adminId, password }: AdminLoginProps) =>
       instance.post<AuthResponse>('/admin/auth', {
@@ -35,8 +36,15 @@ export const useAdminLogin = (redirectURL: string) => {
             Toast('로그인에 실패하였습니다.', { type: 'error' });
         }
       },
-      onSuccess: (res) => {
-        window.location.href = `${ADMIN_URL}`;
+      onSuccess: async (res) => {
+        let redirectUrl: string;
+        if (COOKIE_DOMAIN === 'localhost') {
+          const isLocalPortOpen = await checkLocalPort(3001);
+          redirectUrl = isLocalPortOpen ? ADMIN_URL : MAIN_URL;
+        } else {
+          redirectUrl = ADMIN_URL;
+        }
+        window.location.href = redirectUrl;
         setTokens(res.data.accessToken, res.data.refreshToken);
         setCookies('authority', 'admin', {
           path: '/',

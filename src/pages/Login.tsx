@@ -20,7 +20,7 @@ export const Login = ({ redirectURL, isAdmin = false }: ILogin) => {
   });
 
   const { mutate: userLogin } = useLogin(redirectURL);
-  const { mutate: adminLogin } = useAdminLogin(redirectURL);
+  const { mutate: adminLogin } = useAdminLogin();
 
   return (
     <SubmitForm>
