@@ -3,5 +3,5 @@ config:
   service_type: fe
   port: 3000
   domain:
-    prod: entry-auth.xquare.app
-    stag: entry-auth-stag.xquare.app
+    prod: auth.entrydsm.hs.kr
+    stag: auth-stag.entrydsm.hs.kr
