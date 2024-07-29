@@ -1,4 +1,5 @@
 const webpack = require('webpack');
+const path = require('path');
 
 module.exports = {
   mode: 'development',
@@ -22,6 +23,18 @@ module.exports = {
     new webpack.DefinePlugin({
       'process.env.REACT_APP_BASE_URL': JSON.stringify(
         process.env.REACT_APP_BASE_URL,
+      ),
+      'process.env.REACT_APP_MAIN_URL': JSON.stringify(
+        process.env.REACT_APP_MAIN_URL,
+      ),
+      'process.env.REACT_APP_AUTH_URL': JSON.stringify(
+        process.env.REACT_APP_AUTH_URL,
+      ),
+      'process.env.REACT_APP_APPLY_URL': JSON.stringify(
+        process.env.REACT_APP_APPLY_URL,
+      ),
+      'process.env.REACT_APP_ADMIN_URL': JSON.stringify(
+        process.env.REACT_APP_ADMIN_URL,
       ),
     }),
   ],

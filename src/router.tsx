@@ -7,10 +7,10 @@ import { NotFound } from './pages/404';
 import { Pass } from './components/Pass';
 import { Verify } from './pages/Verify';
 import { getQueryValues } from './utils/getQueryValues';
+import { MAIN_URL } from './constant/env';
 
 export const Router = () => {
-  const redirectURL =
-    getQueryValues().get('redirect_url') || 'https://www.entrydsm.hs.kr';
+  const redirectURL = getQueryValues().get('redirect_url') || `${MAIN_URL}`;
 
   return (
     <BrowserRouter>
